@@ -1,0 +1,85 @@
+#!/bin/bash
+echo StreamPC
+echo "1. Stream to PC with custom settings - custom bitrate - 4k support"
+echo "2. Stream to PC at 1080p 60fps - 15000kbps bitrate"
+echo "3. Stream to PC at 720p 60fps - 10000kbps bitrate"
+echo "4. Help"
+echo "5. Exit"
+read -rsn1 input
+if [ "$input" == "1" ]; then
+echo Enter IP Address
+read input
+ip=$input
+echo "Enter Resolution (4k, 1080, or 720)"
+read input
+res=$input
+echo "Enter Framerate (60 or 30 fps)"
+read input
+fps=$input
+echo "Enter Bitrate (Kilobytes/sec)"
+read input
+bitrate=$input
+echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
+echo Press ctrl+shift+q to exit
+wait 5
+moonlight stream $ip -$res -fps $fps -bitrate $bitrate
+sleep 5
+clear
+fi
+if [ "$input" == "2" ]; then
+echo Enter IP Address
+read input
+ip=$input
+res=1080
+fps=60
+bitrate=15000
+echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
+echo Press ctrl+shift+q to exit
+wait 5
+moonlight stream $ip -$res -fps $fps -bitrate $bitrate
+sleep 5
+clear
+fi
+if [ "$input" == "3" ]; then
+echo Enter IP Address
+read input
+ip=$input
+res=720
+fps=60
+bitrate=10000
+echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
+echo Press ctrl+shift+q to exit
+wait 5
+moonlight stream $ip -$res -fps $fps -bitrate $bitrate
+sleep 5
+clear
+fi
+if [ "$input" == "4" ]; then
+echo Help
+echo "1. IP Address"
+echo "2. Resolutions"
+read -rsn1 input
+if [ "$input" == "1" ]; then
+echo "Enter Private IP of PC (Example 192.168.0.0) to stream over LAN"
+echo "Enter Public IP (Example 68.150.320.140) to stream over internet"
+echo Press any key to continue
+read -rsn1 input
+StreamPC
+fi
+if [ "$input" == "2" ]; then
+echo Entering Resolution:
+echo "'4k'* - 3840x2160p (UHD)"
+echo "'1080' - 1920x1080p (HD)"
+echo "'720' - 1280x720p (HD)"
+echo "*You must enter --unsupported after (Example: '4k --unsupported') in order for some UHD resolutions to work"
+echo Press any key to continue
+read input
+fi
+fi
+if [ "$input" == "5" ]; then
+echo StreamPC Shut Down
+echo Code By ABadCoder1234
+echo Powered by Moonlight Game Streaming
+echo Goodbye
+sleep 1
+fi

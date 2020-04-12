@@ -1,0 +1,38 @@
+#!/bin/bash
+cd && cd StreamPC
+echo Welcome to StreamPC installer
+echo Step 1/2
+echo "1. Install for Raspbian Buster"
+echo "2. Install for Raspbian Jessie"
+read -rsn1 input
+cp /etc/apt/sources.list sources.list
+if [ "$input" == "1" ]; then
+echo Installing For Raspbian Buster
+sudo echo 'deb http://archive.itimmer.nl/raspbian/moonlight buster main' >> sources.list
+sudo cp sources.list /etc/apt/sources.list
+fi
+if [ "$input" == "2" ]; then
+echo Installing For Raspbian Jessie
+sudo echo 'deb http://archive.itimmer.nl/raspbian/moonlight jessie main' >> sources.list
+sudo cp sources.list /etc/apt/sources.list
+fi
+wget http://archive.itimmer.nl/itimmer.gpg
+sudo apt-key add itimmer.gpg
+sudo apt-get update
+sudo apt-get install moonlight-embedded
+echo Installed Moonlight
+sleep 1
+echo Step 2/2 - Installing StreamPC
+sudo mv StreamPC /bin/StreamPC
+sudo chmod +x /bin/StreamPC
+echo Installed StreamPC
+sleep 1
+echo Would you like to delete StreamPC installer? [y,n]
+read -rsn1 input
+if [ "$input" == "y" ]; then
+cd
+sudo rm -rf StreamPC
+fi 
+echo Use command StreamPC to start
+sleep 5
+clear
