@@ -1,12 +1,15 @@
 #!/bin/bash
+clear
 echo StreamPC
 echo "1. Stream to PC with custom settings - custom bitrate - 4k support"
 echo "2. Stream to PC at 1080p 60fps - 15000kbps bitrate"
 echo "3. Stream to PC at 720p 60fps - 10000kbps bitrate"
 echo "4. Help"
 echo "5. Exit"
+echo "u. Update"
 read -rsn1 input
 if [ "$input" == "1" ]; then
+clear
 echo Enter IP Address
 read input
 ip=$input
@@ -27,6 +30,7 @@ sleep 5
 clear
 fi
 if [ "$input" == "2" ]; then
+clear
 echo Enter IP Address
 read input
 ip=$input
@@ -41,6 +45,7 @@ sleep 5
 clear
 fi
 if [ "$input" == "3" ]; then
+clear
 echo Enter IP Address
 read input
 ip=$input
@@ -55,11 +60,13 @@ sleep 5
 clear
 fi
 if [ "$input" == "4" ]; then
+clear
 echo Help
 echo "1. IP Address"
 echo "2. Resolutions"
 read -rsn1 input
 if [ "$input" == "1" ]; then
+clear
 echo "Enter Private IP of PC (Example 192.168.0.0) to stream over LAN"
 echo "Enter Public IP (Example 68.150.320.140) to stream over internet"
 echo Press any key to continue
@@ -67,6 +74,7 @@ read -rsn1 input
 StreamPC
 fi
 if [ "$input" == "2" ]; then
+clear
 echo Entering Resolution:
 echo "'4k'* - 3840x2160p (UHD)"
 echo "'1080' - 1920x1080p (HD)"
@@ -82,4 +90,19 @@ echo Code By ABadCoder1234
 echo Powered by Moonlight Game Streaming
 echo Goodbye
 sleep 1
+fi
+if [ "$input" == "u" ]; then
+clear
+echo Updating StreamPC
+git clone https://github.com/ABadCoder1234/StreamPC
+cd
+cd StreamPC
+sudo cp StreamPC /bin/StreamPC
+sudo chmod +x /bin/StreamPC
+echo Remove StreamPC install folder? [y,n]
+read -rsn1 input
+if [ "$input" == "y" ]; then
+cd
+sudo rm -rf StreamPC
+fi
 fi
