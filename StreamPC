@@ -25,7 +25,7 @@ read input
 bitrate=$input
 echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
 echo Press ctrl+shift+q to exit
-wait 5
+sleep 5
 moonlight stream $ip -$res -fps $fps -bitrate $bitrate
 sleep 5
 clear
@@ -40,7 +40,7 @@ fps=60
 bitrate=15000
 echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
 echo Press ctrl+shift+q to exit
-wait 5
+sleep 5
 moonlight stream $ip -$res -fps $fps -bitrate $bitrate
 sleep 5
 clear
@@ -55,7 +55,7 @@ fps=60
 bitrate=10000
 echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
 echo Press ctrl+shift+q to exit
-wait 5
+sleep 5
 moonlight stream $ip -$res -fps $fps -bitrate $bitrate
 sleep 5
 clear
