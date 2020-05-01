@@ -1,11 +1,27 @@
-#!/bin/bash
+#Change these to set quick settings
+
+#Computers IP (Example: 192.168.1.2, UNSET to disable quick settings)
+ip=UNSET
+
+#Stream will not work if you leave the following settings as unset
+#Following settings must be filled in with INTEGER numbers
+#Max FPS of Stream (60 or 30 recommended, others are untested.)
+fps=UNSET
+#Resolution (Streams max resolution, see help section for valid inputs) 
+res=UNSET
+#Bitrate (Kbps)
+bitrate=UNSET
+
+
+#Underneath this line is general code- do not change unless you know what you are doing
 clear
 echo StreamPC
 echo "1. Stream to PC with custom settings - custom bitrate - 4k support"
 echo "2. Stream to PC at 1080p 60fps - 15000kbps bitrate"
 echo "3. Stream to PC at 720p 60fps - 10000kbps bitrate"
-echo "4. Help"
-echo "5. Exit"
+echo "4. Stream to PC with quick settings (Must be set)"
+echo "5. Help"
+echo "6. Exit"
 echo "u. Update"
 echo "+. Add PC"
 read -rsn1 input
@@ -61,6 +77,18 @@ sleep 5
 clear
 fi
 if [ "$input" == "4" ]; then
+if [ "$ip" == "UNSET" ]; then
+echo "You need to set settings!"
+else
+echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
+echo Press ctrl+shift+q to exit
+sleep 5
+moonlight stream $ip -$res -fps $fps -bitrate $bitrate
+sleep 5
+clear
+fi
+fi
+if [ "$input" == "5" ]; then
 clear
 echo Help
 echo "1. IP Address"
@@ -85,7 +113,7 @@ echo Press any key to continue
 read input
 fi
 fi
-if [ "$input" == "5" ]; then
+if [ "$input" == "6" ]; then
 echo StreamPC Shut Down
 echo Code By ABadCoder1234
 echo Powered by Moonlight Game Streaming
@@ -94,6 +122,10 @@ sleep 1
 fi
 if [ "$input" == "u" ]; then
 clear
+echo Updating StreamPC will erase any modifications made to code!
+echo "Are you sure you want to continue [y,n]"
+read -rsn1 input
+if [ "$input" == "y" ]; then
 echo Updating StreamPC
 git clone https://github.com/ABadCoder1234/StreamPC
 cd
@@ -107,9 +139,22 @@ cd
 sudo rm -rf StreamPC
 fi
 fi
+fi
 if [ "$input" == "+" ]; then
 echo Enter IP Address
 read input
 ip=$input
 moonlight pair $ip
+fi
+if [ "$input" == "e" ]; then
+read -rsn1 input
+if [ "$input" == "d" ]; then
+read -rsn1 input
+if [ "$input" == "i" ]; then 
+read -rsn1 input
+if [ "$input" == "t" ]; then
+sudo nano /bin/StreamPC
+fi
+fi
+fi
 fi
