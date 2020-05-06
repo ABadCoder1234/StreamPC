@@ -2,8 +2,8 @@
 cd && cd StreamPC
 echo Welcome to StreamPC installer
 echo Step 1/2
-echo "1. Install for Raspbian Buster"
-echo "2. Install for Raspbian Jessie"
+echo "1. Install for Debian Buster"
+echo "2. Install for Debian Jessie"
 read -rsn1 input
 cp /etc/apt/sources.list sources.list
 if [ "$input" == "1" ]; then
@@ -20,7 +20,11 @@ wget http://archive.itimmer.nl/itimmer.gpg
 sudo apt-key add itimmer.gpg
 sudo apt-get update
 sudo apt-get install moonlight-embedded
+if [ "$?" == "0" ]; then
 echo Installed Moonlight
+else
+echo Failed: Fatal error
+fi
 sleep 1
 echo Step 2/2 - Installing StreamPC
 sudo mv StreamPC /bin/StreamPC
