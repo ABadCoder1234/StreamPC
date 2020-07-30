@@ -47,7 +47,7 @@ echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
 echo Additional Arguments: $additional
 echo Press ctrl+shift+q to exit
 sleep 5
-moonlight stream $ip -$res -fps $fps -bitrate $bitrate -$additional
+moonlight stream $ip -$res -fps $fps -bitrate $bitrate $additional
 sleep 5
 clear
 fi
@@ -89,7 +89,7 @@ echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
 echo Additional Arguments: $additional
 echo Press ctrl+shift+q to exit
 sleep 5
-moonlight stream $ip -$res -fps $fps -bitrate $bitrate
+moonlight stream $ip -$res -fps $fps -bitrate $bitrate $additional
 sleep 5
 clear
 fi
