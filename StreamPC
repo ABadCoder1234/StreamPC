@@ -143,6 +143,7 @@ read -rsn1 input
 if [ "$input" == "y" ]; then
 cd
 sudo rm -rf StreamPC
+StreamPC
 fi
 fi
 fi
@@ -151,6 +152,7 @@ echo Enter IP Address
 read input
 ip=$input
 moonlight pair $ip
+StreamPC
 fi
 if [ "$input" == "e" ]; then
 read -rsn1 input
