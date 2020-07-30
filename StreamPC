@@ -132,6 +132,12 @@ echo Updating StreamPC will erase any modifications made to code!
 echo "Are you sure you want to continue [y,n]"
 read -rsn1 input
 if [ "$input" == "y" ]; then
+clear
+cd
+echo Erasing StreamPC Backup
+sudo rm -rf StreamPCOld
+echo Making New StreamPC Backup
+sudo mv StreamPC StreamPCOld
 echo Updating StreamPC
 git clone https://github.com/ABadCoder1234/StreamPC
 cd
