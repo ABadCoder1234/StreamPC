@@ -11,22 +11,32 @@ fps=UNSET
 res=UNSET
 #Bitrate (Kbps)
 bitrate=UNSET
-#Additional Arguments (See moonlight-embedded wiki on github - Potential to break everything - Leave blank if unsure)
+
+
+#Additional Arguements (Only works while using default settings Leave blank if unsure)
+#Arguements in quotes
 additional=
+
 
 #Underneath this line is general code- do not change unless you know what you are doing
 clear
 echo StreamPC
-echo "1. Stream to PC with custom settings - custom bitrate - 4k support"
-echo "2. Stream to PC at 1080p 60fps - 15000kbps bitrate"
-echo "3. Stream to PC at 720p 60fps - 10000kbps bitrate"
-echo "4. Stream to PC with quick settings (Must be set)"
-echo "5. Help"
-echo "6. Exit"
+echo "1. Use recomended settings"
+echo "2. Stream to PC with custom settings - custom bitrate - 4k support"
+echo "3. Stream to PC at 1080p 60fps - 15000kbps bitrate"
+echo "4. Stream to PC at 720p 60fps - 10000kbps bitrate"
+echo "5. Stream to PC with quick settings (Must be set)"
+echo "6. Help"
+echo "7. Exit"
 echo "u. Update"
 echo "+. Add PC"
 read -rsn1 input
 if [ "$input" == "1" ]; then
+clear
+echo Additional Arguements: $additional
+moonlight stream $additional
+fi
+if [ "$input" == "2" ]; then
 clear
 echo Enter IP Address
 read input
@@ -40,18 +50,14 @@ fps=$input
 echo "Enter Bitrate (Kilobytes/sec)"
 read input
 bitrate=$input
-echo "Additional Arguements (Press enter to skip)"
-read input
-additional=$input
 echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
-echo Additional Arguments: $additional
 echo Press ctrl+shift+q to exit
 sleep 5
 moonlight stream $ip -$res -fps $fps -bitrate $bitrate $additional
 sleep 5
 clear
 fi
-if [ "$input" == "2" ]; then
+if [ "$input" == "3" ]; then
 clear
 echo Enter IP Address
 read input
@@ -66,7 +72,7 @@ moonlight stream $ip -$res -fps $fps -bitrate $bitrate
 sleep 5
 clear
 fi
-if [ "$input" == "3" ]; then
+if [ "$input" == "4" ]; then
 clear
 echo Enter IP Address
 read input
@@ -81,7 +87,7 @@ moonlight stream $ip -$res -fps $fps -bitrate $bitrate
 sleep 5
 clear
 fi
-if [ "$input" == "4" ]; then
+if [ "$input" == "5" ]; then
 if [ "$ip" == "UNSET" ]; then
 echo "You need to set settings!"
 else
@@ -89,12 +95,12 @@ echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
 echo Additional Arguments: $additional
 echo Press ctrl+shift+q to exit
 sleep 5
-moonlight stream $ip -$res -fps $fps -bitrate $bitrate $additional
+moonlight stream $ip -$res -fps $fps -bitrate $bitrate
 sleep 5
 clear
 fi
 fi
-if [ "$input" == "5" ]; then
+if [ "$input" == "6" ]; then
 clear
 echo Help
 echo "1. IP Address"
@@ -119,7 +125,7 @@ echo Press any key to continue
 read input
 fi
 fi
-if [ "$input" == "6" ]; then
+if [ "$input" == "7" ]; then
 echo StreamPC Shut Down
 echo Code By ABadCoder1234
 echo Powered by Moonlight Game Streaming
