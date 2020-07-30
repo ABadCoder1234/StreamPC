@@ -11,7 +11,8 @@ fps=UNSET
 res=UNSET
 #Bitrate (Kbps)
 bitrate=UNSET
-
+#Additional Arguments (See moonlight-embedded wiki on github - Potential to break everything - Leave blank if unsure)
+additional=
 
 #Underneath this line is general code- do not change unless you know what you are doing
 clear
@@ -39,10 +40,14 @@ fps=$input
 echo "Enter Bitrate (Kilobytes/sec)"
 read input
 bitrate=$input
+echo "Additional Arguements (Press enter to skip)"
+read input
+additional=$input
 echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
+echo Additional Arguments: $additional
 echo Press ctrl+shift+q to exit
 sleep 5
-moonlight stream $ip -$res -fps $fps -bitrate $bitrate
+moonlight stream $ip -$res -fps $fps -bitrate $bitrate -$additional
 sleep 5
 clear
 fi
@@ -81,6 +86,7 @@ if [ "$ip" == "UNSET" ]; then
 echo "You need to set settings!"
 else
 echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
+echo Additional Arguments: $additional
 echo Press ctrl+shift+q to exit
 sleep 5
 moonlight stream $ip -$res -fps $fps -bitrate $bitrate
