@@ -1,6 +1,6 @@
 #Change these to set quick settings
 
-#Computers IP (Example: 192.168.1.2, UNSET to disable quick settings)
+#Computers IP (Example: 192.168.1.2, UNSET to disable quick settings, leave BLANK for auto)
 ip=UNSET
 
 #Stream will not work if you leave the following settings as unset
@@ -21,7 +21,7 @@ additional=
 #Underneath this line is general code- do not change unless you know what you are doing
 if [ "$1" == "-q" ]; then
 if [ "$ip" == "UNSET" ]; then
-echo "You need to set settings!"
+echo "You need to set settings! (Type 'edit' in StreamPC menu)"
 else
 echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
 echo Additional Arguments: $additional
