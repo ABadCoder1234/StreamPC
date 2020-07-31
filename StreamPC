@@ -141,7 +141,7 @@ read input
 fi
 fi
 if [ "$input" == "7" ]; then
-echo "Enter Additional Command"
+echo "Enter Additional Command (See https://github.com/irtimmer/moonlight-embedded/wiki for help)"
 read input
 addcom=$input
 moonlight $addcom
