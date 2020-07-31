@@ -120,6 +120,7 @@ clear
 echo Help
 echo "1. IP Address"
 echo "2. Resolutions"
+echo "3. Additional Commands/Arguments"
 read -rsn1 input
 if [ "$input" == "1" ]; then
 clear
@@ -138,6 +139,23 @@ echo "'720' - 1280x720p (HD)"
 echo "*You must enter --unsupported after (Example: '4k --unsupported') in order for some UHD resolutions to work"
 echo Press any key to continue
 read input
+fi
+if [ "$input" == "3" ]; then
+clear
+echo Additional Commands:
+echo "Entering the stream uses the command 'Stream'"
+echo "Entering alternate options will use options other than stream"
+echo "Example:"
+echo "Using Alternate Option 'map' will run moonlight map instead of moonlight stream"
+echo "You can use stream and customize it more, but this is for more advanced users"
+echo "For additional help see https://github.com/irtimmer/moonlight-embedded/wiki"
+echo Additional Arguments:
+echo "Extra arguments that are executed with the command"
+echo "Options while using moonlight stream"
+echo "Example:"
+echo "Running Additional Argument '-w 1920 -h 1080' would be like typing in moonlight stream -w 1920 -h 1080"
+echo "You must put quotes around the arguments"
+echo "While using the custom resolution setting, put additional arguments under the resolution option" 
 fi
 fi
 if [ "$input" == "7" ]; then
