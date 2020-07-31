@@ -31,7 +31,8 @@ moonlight stream $ip -$res -fps $fps -bitrate $bitrate
 sleep 5
 clear
 fi
-else
+fi
+if [ "$1"=="" ]; then
 clear
 echo StreamPC
 echo "1. Use recomended settings"
