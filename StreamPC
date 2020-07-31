@@ -144,7 +144,7 @@ if [ "$input" == "7" ]; then
 echo "Enter Additional Command"
 read input
 addcom=$input
-moonlight=$addcom
+moonlight $addcom
 fi
 if [ "$input" == "x" ]; then
 echo StreamPC Shutting Down
