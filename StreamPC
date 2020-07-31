@@ -41,7 +41,8 @@ echo "3. Stream to PC at 1080p 60fps - 15000kbps bitrate"
 echo "4. Stream to PC at 720p 60fps - 10000kbps bitrate"
 echo "5. Stream to PC with quick settings (Must be set)"
 echo "6. Help"
-echo "7. Exit"
+echo "7. Additional Commands"
+echo "x. Exit"
 echo "u. Update"
 echo "+. Add PC"
 read -rsn1 input
@@ -140,11 +141,17 @@ read input
 fi
 fi
 if [ "$input" == "7" ]; then
-echo StreamPC Shut Down
+echo "Enter Additional Command"
+read input
+addcom=$input
+moonlight=$addcom
+fi
+if [ "$input" == "x" ]; then
+echo StreamPC Shutting Down
 echo Code By ABadCoder1234
 echo Powered by Moonlight Game Streaming
 echo Goodbye
-sleep 1
+sleep 2
 fi
 if [ "$input" == "u" ]; then
 clear
@@ -172,6 +179,13 @@ sudo rm -rf StreamPC
 StreamPC
 fi
 fi
+fi
+if [ "$input" == "+" ]; then
+echo Enter IP Address
+read input
+ip=$input
+moonlight pair $ip
+StreamPC
 fi
 if [ "$input" == "+" ]; then
 echo Enter IP Address
