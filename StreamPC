@@ -19,6 +19,19 @@ additional=
 
 
 #Underneath this line is general code- do not change unless you know what you are doing
+if [ "$1"=="-q" ]; then
+if [ "$ip" == "UNSET" ]; then
+echo "You need to set settings!"
+else
+echo Streaming from $ip at $res "$fps"fps with bitrate of $bitrate
+echo Additional Arguments: $additional
+echo Press ctrl+shift+q to exit
+sleep 5
+moonlight stream $ip -$res -fps $fps -bitrate $bitrate
+sleep 5
+clear
+fi
+else
 clear
 echo StreamPC
 echo "1. Use recomended settings"
@@ -174,6 +187,7 @@ if [ "$input" == "i" ]; then
 read -rsn1 input
 if [ "$input" == "t" ]; then
 sudo nano /bin/StreamPC
+fi
 fi
 fi
 fi
