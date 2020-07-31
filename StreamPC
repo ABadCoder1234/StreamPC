@@ -19,7 +19,7 @@ additional=
 
 
 #Underneath this line is general code- do not change unless you know what you are doing
-if [ "$1"=="-q" ]; then
+if [ "$1" == "-q" ]; then
 if [ "$ip" == "UNSET" ]; then
 echo "You need to set settings!"
 else
@@ -32,7 +32,7 @@ sleep 5
 clear
 fi
 fi
-if ! [ "$1"=="-q" ]; then
+if ! [ "$1" == "-q" ]; then
 clear
 echo StreamPC
 echo "1. Use recomended settings"
